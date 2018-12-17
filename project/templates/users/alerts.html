@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="page-header">
+        <h1>Your alerts</h1>
+    </div>
+
+    <div class="list-group">
+        {% for alert in alerts %}
+            <a href="{{ url_for('alerts.check_alert', alert_id = alert._id) }}" class="list-group-item {{'list-group-item-warning' if not alert.active else ''}}">
+                <h3 class="list-group-item-heading">
+                    {{ "<span class='glyphicon glyphicon-remove-circle'></span>" |safe if not alert.active else '' }} Alert for: {{ alert.item.name }}</h3>
+                <p class="list-group-item-text">Your price limit: {{ alert.price_limit }} PLN <br>
+                    Latest price (PLN): <strong>{{ alert.item.price }}</strong> <small>(checked on {{ alert.last_check.strftime("%d-%m-%Y at %H:%M") }})</small> </p>
+            </a>
+        {% endfor %}
+    </div>
+    <a class="btn btn-success" href="{{ url_for('alerts.add_alert') }}">New alert</a>
+
+{% endblock %}

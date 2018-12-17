@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="jumbotron">
+      <h2>Price Tracker</h2><br>
+      <p>Track prices of items that interest you!</p>
+      <p>Just sign up and start!</p><br>
+      <p><a class="btn btn-primary btn-lg" href="{{ url_for('users.register') }}" role="button">Sign up!</a></p>
+    </div>
+
+{% endblock %}

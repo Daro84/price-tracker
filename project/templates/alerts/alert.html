@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <div class="page-header">
+        <h2>Alert for {{ alert.item.name }}</h2>
+    </div>
+
+    <p>Last price (PLN): <strong>{{ alert.item.price }}</strong></p>
+    <p>Last checked: {{ alert.last_check.strftime("%d-%m-%Y at %H:%M") }}</p>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <a class="btn btn-info" role="button" href="{{ alert.item.url }}" target="_blank">Visit site</a>
+            <a class="btn btn-primary" role="button" href="{{ url_for('alerts.check_actual_price', alert_id=alert._id) }}">Check actual price</a>
+            <a class="btn btn-warning" role="button" href="{{ url_for('alerts.edit_alert', alert_id=alert._id) }}">Edit alert</a>
+            {% if alert.active %}
+                <a class="btn btn-danger" role="button" href="{{ url_for('alerts.deactivate_alert', alert_id=alert._id) }}">Deactivate alert</a>
+            {% else %}
+                <a class="btn btn-success" role="button" href="{{ url_for('alerts.activate_alert', alert_id=alert._id) }}">Activate alert</a>
+                <a class="btn btn-danger" role="button" href="{{ url_for('alerts.delete_alert', alert_id=alert._id) }}">Delete alert</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
