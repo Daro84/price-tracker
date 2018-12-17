@@ -4,7 +4,7 @@ import os
 
 
 app = Flask(__name__)
-app.config.from_object("config")
+app.config.from_object("project.config")
 app.secret_key = os.environ.get("app.secret_key")
 
 
