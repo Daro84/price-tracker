@@ -11,9 +11,9 @@ You can check this app (with limited functionalities) on herokuapp:
 https://price-tracking-tool.herokuapp.com/
 
 
-![register](https://github.com/Daro84/price-tracker/tree/master/project/static/img/register.jpg)
-![alerts](https://github.com/Daro84/price-tracker/tree/master/project/static/img/alerts.jpg)
-![alert](https://github.com/Daro84/price-tracker/tree/master/project/static/img/alert.jpg)
-![edit](https://github.com/Daro84/price-tracker/tree/master/project/static/img/edit.jpg)
+![register](https://github.com/Daro84/price-tracker/project/static/img/register.jpg)
+![alerts](https://github.com/Daro84/price-tracker/project/static/img/alerts.jpg)
+![alert](https://github.com/Daro84/price-tracker/project/static/img/alert.jpg)
+![edit](https://github.com/Daro84/price-tracker/project/static/img/edit.jpg)
 
  
