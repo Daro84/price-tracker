@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from project.models.alerts.alert import Alert
 from project.models.items.item import Item
+import project.models.alerts.errors as Errors
 import project.models.users.decorators as decorators
 
 alert_blueprint = Blueprint("alerts", __name__)
@@ -14,11 +15,15 @@ def add_alert():
         url = request.form['url']
         price_limit = float(request.form['price_limit'])
 
-        item = Item(name, url)
-        item.save_item_data()
-
-        alert = Alert(session['email'], item._id, price_limit)
-        alert.check_price()
+        try:
+            if Item.url_validation(url):
+                item = Item(name, url)
+                item.save_item_data()
+                alert = Alert(session['email'], item._id, price_limit)
+                alert.check_price()
+                return redirect(url_for("users.user_alerts"))
+        except Errors.AlertErrors as e:
+            return e.message
 
     return render_template("alerts/new_alert.html")
 

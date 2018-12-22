@@ -22,3 +22,8 @@ class Utils(object):
     def valid_email(email):
         email_pattern = re.compile("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
         return True if email_pattern.match(email) else False
+
+    @staticmethod
+    def valid_url(url):
+        url_pattern = re.compile("^https://www.ceneo.pl/+[0-9]")
+        return True if url_pattern.match(url) else False

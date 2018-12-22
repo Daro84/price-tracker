@@ -13,7 +13,7 @@ class User(object):
         self._id = uuid.uuid4().hex if _id is None else _id
 
     def __repr__(self):
-        return "User {} with an email {}".format(self.user,self.email)
+        return "User {} with an email {}".format(self.user, self.email)
 
     @staticmethod
     def user_validation(email, password):

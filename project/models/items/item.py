@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 from project.common.database import Database
+from project.common.utils import Utils
+from project.models.alerts.errors import InvalidUrlError
 import uuid
 
 
@@ -40,3 +42,9 @@ class Item(object):
     @classmethod
     def get_by_id(cls, item_id):
         return cls(**Database.find_one("items", {"_id": item_id}))
+
+    @staticmethod
+    def url_validation(url):
+        if not Utils.valid_url(url):
+            raise InvalidUrlError("Please enter valid URL in format: https://www.ceneo.pl/XXXXXXXX")
+        return True
